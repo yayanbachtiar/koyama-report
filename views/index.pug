@@ -1,0 +1,31 @@
+html
+  head
+    title= title
+    style
+      include ../node_modules/bootstrap/dist/css/bootstrap.min.css
+      include ../node_modules/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css
+  body
+    nav.navbar.navbar-expand-md.navbar-dark.bg-dark.fixed-top
+    main(role="main").container
+      div.starter-template
+        form(action='/', method='POST').horizontal-form
+          div.form-group
+            label.form-label Pilih Kelompok Tani
+            select#kelompok(name="kelompok").form-control
+              each val in kelompok_tani
+                option(value=val.GrupPelangganID)= val.GrupPelangganID + ' - ' + val.GrupPelangganInfo
+          div.form-group
+            label.form-label Buka Buku
+            input(type="text" name="start_date" required).form-control.date
+          div.form-group
+            label.form-label Tutup Buku
+            input(type="text" name="end_date" required).form-control.date
+          div.form-row
+            div.col-md-3
+              input(type="submit" value="Download").btn.btn-primary.padding
+              button(type="reset").btn.btn-default.padding Reset
+    script
+      include ../node_modules/jquery/dist/jquery.min.js
+      include ../node_modules/bootstrap/dist/js/bootstrap.min.js
+      include ../node_modules/bootstrap-datepicker/dist/js/bootstrap-datepicker.js
+      include ../public/javascripts/script.js
